@@ -1,0 +1,2 @@
+language = "python3"
+run = "python 02_integer_check.py"

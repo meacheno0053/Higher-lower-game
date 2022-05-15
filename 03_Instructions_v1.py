@@ -1,4 +1,3 @@
-import random
 
 # Functions go here -
 def yes_no (question):
@@ -18,14 +17,10 @@ def yes_no (question):
 
 
 def instructions ():
-  print()
   print("**** How to play ****")
   print()
-  print("""
-        
-**** INSTRUCTIONS ****
-  
-""")
+  print("the rules of the game go here")
+  print()
   return""
 
 # main routine starts here
@@ -33,3 +28,5 @@ played_before = yes_no("have you played before?")
 
 if played_before == "no":
   instructions()
+
+print ("program continues")

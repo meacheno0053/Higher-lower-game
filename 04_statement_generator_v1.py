@@ -1,18 +1,20 @@
-
-
-def statement_generator(statement, decoration):
+# Decoration
+def statement_generator(statement, decoration, style):
 
   sides = decoration * 3
 
-  statement = "{} {}         {}".format(sides, statement, sides)
-  top_bottom = decoration *       len(statement)
+  statement = "{} {} {}".format(sides, statement, sides)
+  top_bottom = decoration * len(statement)
 
-  print(top_bottom)
-  print(statement)
-  print(top_bottom)
+  if style == 3:
+  
+    print(top_bottom)
+    print(statement)
+    print(top_bottom)
+  else:
+    print(statement)
 
   return ""
 
-
-# main routine goes here
-statement_generator(" ** welcome to the higher lower game **", "*", 3)
+# Main Routine goes here
+statement_generator("** Welcome To The Higher Lower Game **", "*", 3)

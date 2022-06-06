@@ -30,7 +30,6 @@ while end_game =="no":
                   "paper / scissors (or xxx to quit)"
   
   # Ask user for choice and check it's valid
-  user_choice =
-choice_checker("please choose an integer between the highest and lowest")
+  user_choice = choice_checker("please choose an integer between the highest and lowest")
   if user_choice == "xxx":
     break

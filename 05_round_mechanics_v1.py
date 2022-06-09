@@ -2,7 +2,7 @@
 
 
 def check_rounds():
-  while true:
+  while True:
     response = input("How many rounds: ")
 
     round_error = "Please type either <Enter> " \

@@ -1,5 +1,3 @@
-import random
-
 # Functions go here -
 def yes_no (question):
   valid = False
@@ -23,11 +21,25 @@ def instructions ():
   print("""
         
 ---- INSTRUCTIONS ----
-  
+
+Choose a low integer (lowest being 0) and a high number being at least 10 or above. 
+        
+The computer will then choose a number between the highest and lowest numbers selected. 
+        
+You then have to strategically guess the number the computer has chosen.
+The less guesses the better.
+
+Once you guess the number the computer will then respond 'higher or lower' depending on if the number it has chosen is higher or lower than your guess.
+
+Press enter to lock in your guess.
+         <OR>
+Use 'xxx' to quit the game.
+        
 """)
   return""
 
 # decoration
+
 def statement_generator(statement, decoration, style):
 
   sides = decoration * 3
@@ -46,16 +58,9 @@ def statement_generator(statement, decoration, style):
   return ""
 
 # main routine starts here
-statement_generator("** welcome to the higher lower game **", "*", 3)
-print()
-played_before = yes_no("have you played before?")
 
-if played_before == "no":
-  instructions()
 
-# Number checking function goes here
-print()
-def int_check(question, low=None, high=None):
+def int_check(question, low=None, high=None, exit_code = None):
 
   situation = ""
 
@@ -66,8 +71,13 @@ def int_check(question, low=None, high=None):
 
   while True:
 
+    response = input(question)
+
+    if response == exit_code:
+      return response
+
     try:
-      response = int(input(question))
+      response = int(response)
 
       # checks input is not too high or
       #too low if a both upper and lower bounds
@@ -95,6 +105,55 @@ def int_check(question, low=None, high=None):
       
 # Main routine
 
+
+
+# Main routine  Starts here
+
+# initialise whole game variables and lists
+rounds_played = 0
+
+
+# guess = int_check("Guess: ", lowest, highest, exit_code="xxx")
+
+statement_generator("** welcome to the higher lower game **", "*", 3)
+print()
+
+played_before = yes_no("have you played before?")
+
+if played_before == "no":
+  instructions()
+
 lowest = int_check("Low Number: ")
 highest = int_check("High Number: ", lowest + 1)
-guess = int_check("Guess: ", lowest, highest)
+rounds = int_check("How many rounds? <enter> for infinite", 0, exit_code = "")
+
+end_game = "no"
+while end_game =="no":
+
+  # Start of game play loop
+
+  
+  # Rounds Heading
+  print()
+  if rounds =="":
+    heading = "Continuous Mode: Round {}".format(rounds_played +1)
+  else:
+    heading = "Round {} of".format(rounds_played + 1, rounds)    
+
+  
+  print(heading)
+
+  guess = input()
+  if guess == "xxx":
+      end_game = "yes"
+      break
+  
+ 
+  rounds_played += 1
+
+  # end game if requested # of rounds has been played
+  if rounds_played == rounds:
+    break
+
+# Put end game content here
+print("Thank you for playing")

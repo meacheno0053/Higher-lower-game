@@ -1,3 +1,5 @@
+import random
+
 # Functions go here -
 def yes_no (question):
   valid = False
@@ -22,11 +24,11 @@ def instructions ():
         
 ---- INSTRUCTIONS ----
 
-Choose a low integer (lowest being 0) and a high number being at least 10 or above. 
+Choose a low integer (lowest being 1) and a high number being at least 10 or above. 
         
-The computer will then choose a number between the highest and lowest numbers selected. 
+The computer will then choose a secret number between your two chosen numbers. 
         
-You then have to strategically guess the number the computer has chosen.
+the computer will calculate the number of guesses you are allowed.
 The less guesses the better.
 
 Once you guess the number the computer will then respond 'higher or lower' depending on if the number it has chosen is higher or lower than your guess.
@@ -34,7 +36,8 @@ Once you guess the number the computer will then respond 'higher or lower' depen
 Press enter to lock in your guess.
          <OR>
 Use 'xxx' to quit the game.
-        
+
+Good Luck!
 """)
   return""
 
@@ -125,7 +128,7 @@ if played_before == "no":
 
 lowest = int_check("Low Number: ")
 highest = int_check("High Number: ", lowest + 1)
-rounds = int_check("How many rounds? <enter> for infinite", 0, exit_code = "")
+rounds = int_check("How many rounds? <enter> for infinite ", 0, exit_code = "")
 
 end_game = "no"
 while end_game =="no":
@@ -143,10 +146,21 @@ while end_game =="no":
   
   print(heading)
 
-  guess = input()
-  if guess == "xxx":
-      end_game = "yes"
-      break
+  secret = random.randint(lowest, highest)
+  print("spoiler alert", secret)
+
+  # Guessing Loop
+
+  guess = ""
+  while guess != secret:
+
+    guess = int_check("Guess", lowest, highest, "xxx")
+    if guess == "xxx":
+        end_game = "yes"
+        break
+
+    elif guess < secret:
+      print("")
   
  
   rounds_played += 1
@@ -157,3 +171,5 @@ while end_game =="no":
 
 # Put end game content here
 print("Thank you for playing")
+
+# end game summary

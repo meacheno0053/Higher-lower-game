@@ -1,3 +1,12 @@
 {
-  "files": {}
+  "files": {
+    "06_game_summary_v1.py": [
+      {
+        "id": "cf0b3638-46b6-4b5d-8a45-9d74c58ff0af",
+        "line": 30,
+        "version": 48,
+        "index": 512
+      }
+    ]
+  }
 }

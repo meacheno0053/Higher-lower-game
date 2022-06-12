@@ -1,4 +1,5 @@
 import random
+import math
 
 # Functions go here -
 def yes_no (question):
@@ -118,10 +119,10 @@ rounds_played = 0
 
 # guess = int_check("Guess: ", lowest, highest, exit_code="xxx")
 
-statement_generator("** welcome to the higher lower game **", "*", 3)
+statement_generator("** Welcome to the Higher Lower Game **", "*", 3)
 print()
 
-played_before = yes_no("have you played before?")
+played_before = yes_no("Have you played before?")
 
 if played_before == "no":
   instructions()
@@ -130,11 +131,20 @@ lowest = int_check("Low Number: ")
 highest = int_check("High Number: ", lowest + 1)
 rounds = int_check("How many rounds? <enter> for infinite ", 0, exit_code = "")
 
+var_range = highest - lowest + 1 
+max_raw = math.log2(var_range)
+max_upped = math.ceil(max_raw)
+max_guesses = max_upped + 1
+print("Max guesses: {}".format(max_guesses))
+
+
+num_won = 0
+
 end_game = "no"
 while end_game =="no":
 
   # Start of game play loop
-
+  guesses_left = max_guesses
   
   # Rounds Heading
   print()
@@ -152,20 +162,47 @@ while end_game =="no":
   # Guessing Loop
 
   guess = ""
-  while guess != secret:
+  while guess != secret and guesses_left > 0:
+
+    already_guessed = []
 
     guess = int_check("Guess", lowest, highest, "xxx")
     if guess == "xxx":
         end_game = "yes"
         break
 
-    elif guess < secret:
-      print("")
+    #checks that guess is not a duplicate
+    if guess in already_guessed:
+      print("You already guessed that number! Please try again "
+           "You *still* have {} guesses left.".format(guesses_left))
+      continue
+
+    guesses_left = guesses_left - 1
+    already_guessed.append(guess)
+  
+    if guesses_left >= 1:
+  
+      if guess < secret:
+        print("Too low, try a higher number.  Guesses left: {}".format(guesses_left))
+  
+      elif guess > secret:
+        print("Too high, try a lower number.  Guesses left: {}".format(guesses_left))
+    else:
+      if guess < secret:
+        print("Too low!  You have run out of guesses!")
+      elif guess > secret: 
+        print("Too high! You have run out of guesses!")
+  
+  if guess == secret:
+    if guesses_left > 1:
+      print("Amazing! you got in less than {} guesses_allowed".format(guesses_left))
+    else:
+      print("Well done, you got it in {} guesses. You have {} guesses_left".format(guesses_left))
   
  
   rounds_played += 1
-
-  # end game if requested # of rounds has been played
+  
+    # end game if requested # of rounds has been played
   if rounds_played == rounds:
     break
 

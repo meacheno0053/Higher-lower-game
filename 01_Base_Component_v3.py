@@ -183,21 +183,21 @@ while end_game =="no":
     if guesses_left >= 1:
   
       if guess < secret:
-        print("Too low, try a higher number.  Guesses left: {}".format(guesses_left))
+        print("Too low, try a higher number. Guesses left: {}".format(guesses_left))
   
       elif guess > secret:
-        print("Too high, try a lower number.  Guesses left: {}".format(guesses_left))
+        print("Too high, try a lower number. Guesses left: {}".format(guesses_left))
     else:
       if guess < secret:
-        print("Too low!  You have run out of guesses!")
+        print("WHOOPS! Too low!  You have run out of guesses!")
       elif guess > secret: 
-        print("Too high! You have run out of guesses!")
+        print("WHOOPS! Too high! You have run out of guesses!")
   
   if guess == secret:
     if guesses_left > 1:
-      print("Amazing! you got in less than {} guesses_allowed".format(guesses_left))
+      print("Amazing! you got in less than {} guesses".format(max_guesses))
     else:
-      print("Well done, you got it in {} guesses. You have {} guesses_left".format(guesses_left))
+      print("Well done, you got it with {} guesses left.".format(already_guessed))
   
  
   rounds_played += 1

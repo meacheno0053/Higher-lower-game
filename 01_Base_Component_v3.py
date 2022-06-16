@@ -106,11 +106,6 @@ def int_check(question, low=None, high=None, exit_code = None):
       print("Please enter an integer")
       continue
 
-      
-# Main routine
-
-
-
 # Main routine  Starts here
 
 # initialise whole game variables and lists
@@ -157,14 +152,27 @@ while end_game =="no":
   print(heading)
 
   secret = random.randint(lowest, highest)
-  print("spoiler alert", secret)
+  print("spoiler alert!", secret) 
+ 
+  run = True
+while run :
+    user_input = int(input('enter number: '))  # replace with function call when integrated
+    if user_input == secret :
+      print('you won!')
+      run = False
+    elif user_input < secret:
+      print("Too High, try a lower number")
+      
+    else:
+        print('try again!')
 
+  
   # Guessing Loop
 
-  guess = ""
-  while guess != secret and guesses_left > 0:
-
-    already_guessed = []
+    guess = ""
+    while guess != secret and guesses_left > 0:
+  
+      already_guessed = []
 
     guess = int_check("Guess", lowest, highest, "xxx")
     if guess == "xxx":
@@ -193,18 +201,18 @@ while end_game =="no":
       elif guess > secret: 
         print("WHOOPS! Too high! You have run out of guesses!")
   
-  if guess == secret:
-    if guesses_left > 1:
-      print("Amazing! you got in less than {} guesses".format(max_guesses))
+    if guess == secret:
+      if guesses_left > 1:
+        print("Amazing! you got in less than {} guesses".format(max_guesses))
     else:
       print("Well done, you got it with {} guesses left.".format(already_guessed))
   
  
-  rounds_played += 1
+    rounds_played += 1
   
     # end game if requested # of rounds has been played
-  if rounds_played == rounds:
-    break
+    if rounds_played == rounds:
+      break
 
 # Put end game content here
 print("Thank you for playing")

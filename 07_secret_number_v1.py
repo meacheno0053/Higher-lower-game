@@ -1,7 +1,16 @@
 import random
 
-hl_list = ["guess", "lowest", "highest", "xxx"]
+secret = random.randint(lowest, highest)
+print("spoiler alert", secret)
 
-for item in range(0,20):
-  comp_choice = random.choice(hl_list[:-1])
-  print(comp_choice, end="\t")
+run = True
+while run :
+    user_input = int(input('enter number: '))  # replace with function call when integrated
+    if user_input == secret :
+      print('you won!')
+      run = False
+    elif user_input < secret:
+      print("Too High, try a lower number")
+      
+    else:
+        print('try again!')

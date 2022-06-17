@@ -8,7 +8,7 @@ rounds_lost = 0
 choose_instruction = "please choose an integer between the lowest chosen and the highest chosen"
 
 # Ask user for # of rounds, <enter> for infinate mode
-rounds = check_rounds()
+rounds = rounds_played ()
 
 end_game = "no"
 while end_game =="no":

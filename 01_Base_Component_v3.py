@@ -29,7 +29,7 @@ Choose a low integer (lowest being 1) and a high number being at least 10 or abo
 
 The computer will then choose a secret number between your two chosen numbers. 
 
-the computer will calculate the number of guesses you are allowed.
+The computer will calculate the number of guesses you are allowed.
 The less guesses the better.
 
 Once you guess the number the computer will then respond 'higher or lower' depending on if the number it has chosen is higher or lower than your guess.
@@ -147,7 +147,6 @@ while end_game =="no":
     print()
     if rounds =="":
         heading = "Continuous Mode: Round {}".format(rounds_played +1)
-        print(heading)
     else:
         heading = "Round #{} of {}".format(rounds_played + 1, rounds)    
     
@@ -155,7 +154,7 @@ while end_game =="no":
     print(heading)
     
     secret = random.randint(lowest, highest)
-    print("spoiler alert!", secret) 
+    print("spoiler alert", secret)
     
     # Guessing Loop   
     guess = ""
@@ -190,18 +189,18 @@ while end_game =="no":
                     print("WHOOPS! Too high! You have run out of guesses!")
         
         if guess == secret:
-            print(CONGRATULATIONS )
+            print("CONGRATULATIONS you guessed the secret number ")
             if guesses_left > 1:
                 print("Amazing! you got in less than {} guesses".format(max_guesses))
             else:
                 print("Well done, you got it with {} guess/es left.".format(guesses_left))
             
             
-        rounds_played += 1
-            
-        # end game if requested # of rounds has been played
-        if rounds_played == rounds:
-            break
+    rounds_played += 1
+        
+    # end game if requested # of rounds has been played
+    if rounds_played == rounds:
+        break
 
 # Put end game content here
 print("Thank you for playing")
